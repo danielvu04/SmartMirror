@@ -1,0 +1,48 @@
+{
+  "name": "smart-mirror",
+  "version": "1.0.0",
+  "description": "A smart mirror system with facial recognition and personalization",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "docs": "node ./scripts/test-and-doc.js",
+    "docs:clean": "rimraf docs/doxygen",
+    "download-face-models": "node ./src/scripts/download-face-models.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "face-api.js": "^0.22.2",
+    "socket.io": "^4.7.2",
+    "node-cache": "^5.1.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "rimraf": "^5.0.5",
+    "doxygen": "^1.10.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "./src/__tests__/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/__tests__/**",
+      "!src/scripts/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+} 
